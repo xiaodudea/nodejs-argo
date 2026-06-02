@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>极客开发者主页</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --primary-color: #00ffcc;
+            --secondary-color: #ff00ff;
+            --text-color: #e0e0e0;
+            --font-mono: 'Courier New', Courier, monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 255, 204, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(255, 0, 255, 0.08), transparent 25%);
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 0 40px rgba(0, 255, 204, 0.1);
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 60px rgba(0, 255, 204, 0.2);
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: block;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 0 20px var(--primary-color);
+            background: url('https://api.dicebear.com/7.x/bottts/svg?seed=Developer') center/cover;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
+        }
+
+        /* 炫酷打字机特效 */
+        .typewriter-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .typewriter {
+            font-family: var(--font-mono);
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            overflow: hidden;
+            border-right: .15em solid var(--primary-color);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .skill-tag {
+            background: transparent;
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 255, 204, 0.3);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 15px var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: var(--text-color);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            border: 1px solid var(--secondary-color);
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .links a:hover {
+            background: var(--secondary-color);
+            color: #fff;
+            box-shadow: 0 0 20px var(--secondary-color);
+        }
+
+        /* 动画定义 */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-color); }
+        }
+
+        /* 简单的背景粒子装饰 */
+        .grid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-size: 50px 50px;
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    
+    <div class="container">
+        <div class="avatar"></div>
+        
+        <h1>Hello, World!</h1>
+        
+        <div class="typewriter-container">
+            <div class="typewriter">
+                > 我是一名热爱开源的全栈开发者_
+            </div>
+        </div>
+
+        <div class="skills">
+            <div class="skill-tag">JavaScript / TS</div>
+            <div class="skill-tag">Python</div>
+            <div class="skill-tag">React & Vue</div>
+            <div class="skill-tag">Node.js</div>
+            <div class="skill-tag">Docker</div>
+            <div class="skill-tag">Web3 / AI</div>
+        </div>
+
+        <div class="links">
+            <a href="#" target="_blank">GitHub</a>
+            <a href="#" target="_blank">个人博客</a>
+            <a href="#" target="_blank">联系我</a>
+        </div>
+    </div>
+</body>
+</html>
